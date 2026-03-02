@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><?= config.EVENT_NAME ?> • <?= config.TAGLINE ?></title>
+  <style>
+    :root {
+      --primary: <?= config.BRAND_PRIMARY ?>;
+      --accent: <?= config.BRAND_ACCENT ?>;
+      --bg: <?= config.BRAND_BG ?>;
+      --text: #ffffff;
+      --muted: #9aa3b2;
+      --card: #12172b;
+      --cardBorder: rgba(255,255,255,.08);
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: 
+        radial-gradient(1200px 600px at 10% -10%, rgba(24,0,173,.25), transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, rgba(251,176,59,.15), transparent 60%),
+        var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--cardBorder);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+      backdrop-filter: blur(4px);
+    }
+    
+    .brand-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    
+    .brand-header img {
+      height: 70px;
+      margin-bottom: 15px;
+    }
+    
+    h1 {
+      margin: 0 0 5px 0;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    
+    .tagline {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 20px 0;
+    }
+    
+    .instructions {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--cardBorder);
+      border-radius: 10px;
+      background: rgba(14, 20, 48, 0.8);
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+    }
+    
+    input[type="text"]:focus {
+      border-color: var(--accent);
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    button {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #2a18d6;
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      border: 1px solid var(--cardBorder);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .message {
+      margin-top: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    
+    .message.error {
+      background: rgba(255, 107, 107, 0.15);
+      color: #ff6b6b;
+      border: 1px solid rgba(255, 107, 107, 0.3);
+    }
+    
+    .message.success {
+      background: rgba(70, 230, 165, 0.15);
+      color: #46e6a5;
+      border: 1px solid rgba(70, 230, 165, 0.3);
+    }
+    
+    .message.info {
+      background: rgba(77, 156, 255, 0.15);
+      color: #4d9cff;
+      border: 1px solid rgba(77, 156, 255, 0.3);
+    }
+    
+    .download-link {
+      display: block;
+      margin-top: 15px;
+      padding: 12px 15px;
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .footer {
+      margin-top: 25px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="brand-header">
+        <img src="<?= config.LOGO_URL ?>" alt="<?= config.EVENT_NAME ?> Logo">
+        <h1><?= config.EVENT_NAME ?></h1>
+        <p class="tagline"><?= config.TAGLINE ?></p>
+      </div>
+      
+      <div class="instructions">
+        <strong>How to download your photo:</strong><br>
+        1. Scan your QR code<br>
+        2. Enter your unique code below<br>
+        3. Click Download to get your photo
+      </div>
+      
+      <div class="form-group">
+        <label for="codeInput">Enter Your Code (உங்கள் குறியீடு)</label>
+        <input type="text" id="codeInput" placeholder="e.g., SF****" value="<?= prefillCode ?>">
+      </div>
+      
+      <div class="button-group">
+        <button class="btn-primary" onclick="checkCode()">Download Photo</button>
+        <button class="btn-secondary" onclick="clearForm()">Clear</button>
+      </div>
+      
+      <div id="message" class="message" style="display: none;"></div>
+      <a id="downloadLink" class="download-link" style="display: none;">Click to download your photo</a>
+    </div>
+    
+    <div class="footer">
+      <?= config.EVENT_NAME ?> • <?= config.TAGLINE ?><br>
+      Powered by NorthenKnights SLIIT NorthernUni
+    </div>
+  </div>
+
+  <script>
+  function showMessage(text, type = 'info') {
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = text;
+    messageEl.className = 'message ' + type;
+    messageEl.style.display = 'block';
+  }
+  
+  function clearForm() {
+    document.getElementById('codeInput').value = '';
+    document.getElementById('message').style.display = 'none';
+    document.getElementById('downloadLink').style.display = 'none';
+  }
+  
+  function checkCode() {
+    const code = document.getElementById('codeInput').value.trim();
+    
+    if (!code) {
+      showMessage('Please enter your code.', 'error');
+      return;
+    }
+    
+    showMessage('Checking code...', 'info');
+    document.getElementById('downloadLink').style.display = 'none';
+    
+    google.script.run
+      .withSuccessHandler(handleResponse)
+      .withFailureHandler(handleError)
+      .apiLookup(code);
+  }
+  
+  function handleResponse(result) {
+    if (result.ok) {
+      showMessage(result.message, 'success');
+      
+      // Create direct download link
+      const downloadLink = document.getElementById('downloadLink');
+      downloadLink.href = result.downloadUrl;
+      downloadLink.style.display = 'block';
+      downloadLink.textContent = 'Download: ' + result.fileName;
+      downloadLink.target = '_blank'; // Open in new tab
+      
+      // Auto-start download after a short delay
+      setTimeout(() => {
+        window.open(result.downloadUrl, '_blank');
+      }, 1000);
+      
+    } else {
+      showMessage(result.error, 'error');
+      document.getElementById('downloadLink').style.display = 'none';
+    }
+  }
+  
+  function handleError(error) {
+    showMessage('An error occurred. Please try again.', 'error');
+    console.error(error);
+    document.getElementById('downloadLink').style.display = 'none';
+  }
+  
+  // Add Enter key support
+  document.getElementById('codeInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      checkCode();
+    }
+  });
+</script>
+</body>
+</html>
